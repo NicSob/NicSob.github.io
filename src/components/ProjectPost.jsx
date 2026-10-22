@@ -6,6 +6,32 @@ import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import './ProjectPost.css'
 
 const projectPosts = {
+  'software-security-pwn': {
+    title: 'Binary Exploitation: From GDB to ROP',
+    date: '2025-10-22',
+    tags: ['binary-exploitation', 'pwn', 'rop'],
+    content: `
+## Overview
+
+Three assignments for the Software Security course, each a set of Linux challenge binaries on a locked-down VM that you have to exploit to recover a flag or escalate privileges. They build from reading disassembly in a debugger up to defeating the mitigations that protect real binaries today. (Techniques only here — the exploit scripts are course solutions and stay private.)
+
+## Assignment 1 — Getting comfortable in GDB
+
+The first set is about living inside the debugger: reading a program's assembly, setting breakpoints at the right spot, and watching or changing its state as it runs. Across five binaries I recovered flags by, for example, breaking on a character-by-character comparison and reading the expected byte each time, or disassembling to find a specific \`cmp\` and patching the compared value in a register at runtime so a check passed. The point is less "exploitation" and more fluency: being able to see exactly what a binary does and bend it.
+
+## Assignment 2 — Classic memory corruption
+
+The second set is hands-on binary exploitation. These binaries have memory-safety bugs — most commonly a buffer that can be overflowed — and the job is to turn that into control. That meant computing the exact offset from an input buffer to the saved return address, overwriting it with the address I wanted (little-endian, built with \`struct.pack\`), and being careful to preserve other variables the program checks along the way. A couple of levels needed hand-written assembly shellcode and small payload generators.
+
+## Assignment 3 — Beating modern defenses
+
+The last set turns the mitigations on. With a non-executable stack you can't just drop in shellcode, so I used **return-oriented programming** — chaining small snippets already in the binary and its libraries — and leaked addresses to defeat **ASLR**, often pulling library pointers out of the **GOT**. I wrote these with **pwntools**, which handles the I/O and ROP-chain plumbing so you can focus on the exploit logic.
+
+## What it demonstrates
+
+Reading and reasoning about x86-64 assembly, GDB fluency, stack buffer overflows and return-address control, shellcode, ROP, ASLR/GOT/PLT techniques under modern mitigations, and exploit development with pwntools.
+    `,
+  },
   'bama-neuralinq': {
     title: 'Reverse Engineering the "Neuralinq" Malware',
     date: '2026-06-25',

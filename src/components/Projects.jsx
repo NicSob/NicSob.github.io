@@ -1,11 +1,13 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import './Projects.css'
 
 const featuredProjects = [
   {
     id: 'google-play-protect-thesis',
+    hasWriteup: true,
     title: "Bachelor's Thesis: Bypassing Google Play Protect",
     year: '2025',
     description: 'Built an instrumented Android app (Kotlin, Jetpack Compose, FastAPI backend) and submitted it to Google Play so the vetting run itself became the dataset. Google Play Protect\'s dynamic analysis ran once, for about 6 minutes, on a Google-hosted device and never exercised form input, so simple environment checks combined with time or logic bombs would likely evade it.',
@@ -13,24 +15,26 @@ const featuredProjects = [
   },
   {
     id: 'bama-neuralinq',
+    hasWriteup: true,
     title: 'Reverse Engineering the "Neuralinq" Malware (BAMA)',
     year: '2026',
     description: 'A six-stage reverse-engineering chain for the Binary and Malware Analysis course, escalating from binary patching to symbolic execution: HyperDbg syscall-level patching and anti-debugging bypass, unpacking a packed ELF (ptrace + auxv checks) with a custom Python repair tool, Intel Pin taint analysis to recover a hidden input, automatic deobfuscation and CFG recovery, and angr symbolic execution to solve a checker.',
     tags: ['reverse-engineering', 'malware-analysis', 'ghidra', 'symbolic-execution'],
   },
   {
+    id: 'software-security-pwn',
+    hasWriteup: true,
+    title: 'Binary Exploitation (Software Security)',
+    year: '2025',
+    description: 'Three assignments of exploiting Linux challenge binaries on a VM: GDB-driven runtime patching, buffer overflows and return-address overwrites with hand-written shellcode, then defeating modern mitigations (ASLR, non-executable stack) with return-oriented programming and GOT/PLT techniques using pwntools.',
+    tags: ['binary-exploitation', 'pwn', 'rop'],
+  },
+  {
     id: 'ijvm-simulator',
     title: 'IJVM Machine Simulator in C',
     year: '2023',
-    description: 'Built an IJVM simulator in C that loads and executes IJVM binaries, implementing the instruction set, stack and control flow, and validated it against a test suite.',
+    description: 'A simulator in C that loads and executes IJVM binaries, implementing the instruction set, operand stack and control flow.',
     tags: ['systems-programming', 'C', 'low-level'],
-  },
-  {
-    id: 'tcp-chat-client',
-    title: 'Text-based Chat Client and Server in Python with TCP',
-    year: '2023',
-    description: 'Built a text-based chat client and a multi-threaded server in Python over TCP, handling multiple concurrent user connections.',
-    tags: ['networking', 'python', 'concurrency'],
   },
 ]
 
@@ -118,6 +122,11 @@ function Projects() {
                       </span>
                     ))}
                   </div>
+                  {project.hasWriteup && (
+                    <Link to={`/projects/${project.id}`} className="project-writeup-link">
+                      cat writeup.md &rarr;
+                    </Link>
+                  )}
                 </div>
               </div>
             </motion.div>

@@ -8,7 +8,7 @@ const navItems = [
   { id: 'education', label: 'education', section: 'education' },
   { id: 'experience', label: 'experience', section: 'experience' },
   { id: 'projects', label: 'projects', section: 'projects' },
-  { id: 'blog', label: 'blog', section: 'blog' },
+  { id: 'blog', label: 'writeups', section: 'blog' },
   { id: 'contact', label: 'contact', section: 'contact' },
 ]
 

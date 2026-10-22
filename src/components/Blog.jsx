@@ -14,6 +14,14 @@ const blogPosts = [
     readTime: '10 min',
   },
   {
+    slug: 'software-security-pwn',
+    title: 'Binary Exploitation: From GDB to ROP',
+    date: '2025-10-22',
+    excerpt: 'Three assignments of exploiting Linux challenge binaries - buffer overflows and return-address overwrites, then bypassing ASLR with ROP and the GOT.',
+    tags: ['binary-exploitation', 'pwn', 'rop'],
+    readTime: '7 min',
+  },
+  {
     slug: 'bama-neuralinq',
     title: 'Reverse Engineering the "Neuralinq" Malware',
     date: '2026-06-25',
@@ -48,7 +56,7 @@ function Blog() {
       <div className="blog-wrapper">
         <div className="blog-divider">
           <div className="divider-line" />
-          <span className="divider-text">// BLOG</span>
+          <span className="divider-text">// WRITE-UPS</span>
           <div className="divider-line" />
         </div>
 
@@ -59,7 +67,7 @@ function Blog() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="section-title">cat /var/log/blog.log</h2>
+          <h2 className="section-title">ls ./writeups</h2>
           <div className="terminal-output">
             <span className="output-prefix">[{blogPosts.length} ENTRIES FOUND]</span>
           </div>
@@ -137,7 +145,7 @@ function Blog() {
               {blogPosts.length === 0 && (
                 <div className="no-posts">
                   <p className="no-posts-text">No blog posts yet.</p>
-                  <p className="no-posts-hint"># echo "Coming soon..." &gt;&gt; blog.log</p>
+                  <p className="no-posts-hint"># echo "Coming soon..." &gt;&gt; writeups</p>
                 </div>
               )}
             </div>
@@ -151,7 +159,7 @@ function Blog() {
           transition={{ delay: 0.5, duration: 0.5 }}
         >
           <p className="footer-hint">
-            <span className="hint-prompt">#</span> More writeups in progress...
+            <span className="hint-prompt">#</span> More write-ups in progress...
           </p>
         </motion.div>
         </div>
