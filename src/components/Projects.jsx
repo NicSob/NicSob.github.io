@@ -15,8 +15,8 @@ const featuredProjects = [
     id: 'bama-neuralinq',
     title: 'Reverse Engineering the "Neuralinq" Malware (BAMA)',
     year: '2026',
-    description: 'A chained reverse-engineering series for the Binary and Malware Analysis course. Patched a Windows binary at the syscall level with HyperDbg (bypassing an OTP check and short-circuiting process termination), and unpacked a packed ELF by defeating ptrace anti-debugging and an auxv-based genuineness check, then wrote a Python tool to repair the dumped binary into a Ghidra-loadable form.',
-    tags: ['reverse-engineering', 'malware-analysis', 'ghidra'],
+    description: 'A six-stage reverse-engineering chain for the Binary and Malware Analysis course, escalating from binary patching to symbolic execution: HyperDbg syscall-level patching and anti-debugging bypass, unpacking a packed ELF (ptrace + auxv checks) with a custom Python repair tool, Intel Pin taint analysis to recover a hidden input, automatic deobfuscation and CFG recovery, and angr symbolic execution to solve a checker.',
+    tags: ['reverse-engineering', 'malware-analysis', 'ghidra', 'symbolic-execution'],
   },
   {
     id: 'ijvm-simulator',

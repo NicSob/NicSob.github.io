@@ -13,7 +13,7 @@ const projectPosts = {
     content: `
 ## Overview
 
-My coursework for Binary and Malware Analysis at VU Amsterdam (grade 7.0): a chained reverse-engineering series against a fictional "Neuralinq" malware, where each challenge builds on the last. Below are the two challenges I wrote up in full.
+My coursework for Binary and Malware Analysis at VU Amsterdam (grade 7.0): a chained reverse-engineering series against a fictional "Neuralinq" malware, where each challenge builds on the last. Below is a walk through the chain, from binary patching to symbolic execution.
 
 ## Challenge 1 — Syscall-level binary patching (Windows)
 
@@ -36,9 +36,29 @@ A later stage shipped a packed Linux binary: a small loader that unpacks the rea
 3. **ELF repair:** a raw memory dump is not a valid file, so I wrote a Python tool (\`unpack.py\`) to rebuild it — fixing the ELF header, rewriting every program header so file offsets match virtual addresses, repairing the dynamic init/fini arrays, and stripping the runtime load base. The result loads cleanly in Ghidra and runs.
 4. **Genuineness check:** the panel read a value the packer had hidden in the process's \`auxv\` (AT_FLAGS) and refused to work without it. I hooked the entry point to restore the expected value before \`main\`, so the unpacked binary behaves like the original.
 
+## Challenge 4 — Dynamic taint analysis (Intel Pin)
+
+Later stages hide a secret input behind a chain of comparisons. I wrote an Intel Pin tool that marks the input file as tainted (hooking the read() syscall) and follows it through the program:
+
+- For every \`cmp\` where exactly one operand is tainted, the other operand is the byte the program expects — so the tool logs (file offset, expected byte).
+- It also hooks libc comparison functions (strcmp, strncmp, memcmp, …) and walks the buffers to catch comparisons the CPU-level \`cmp\` check misses.
+- A Python driver replays this a few times, filling in the recovered bytes each round, until the whole secret input is reconstructed.
+
+## Challenge 5 — Automatic deobfuscation and CFG recovery
+
+The binary hides its control flow behind indirect calls and fake returns, so a normal disassembler can't draw the call graph. I recovered it two ways and then patched the binary:
+
+- **Dynamically:** traced every indirect call and return with Pin to see the real targets.
+- **Statically:** emulated a small window of instructions before each indirect call (mov/add/sub/xor/lea, simple jumps, with capstone and pyelftools) to compute the target without running it.
+- **Patching:** rewrote each indirect call into a direct one — a direct call needs 5 bytes, so the patcher walks backwards to find room and NOP-fills the rest — and NOP'd out the fake return blocks. With calls and returns resolved, Ghidra's function graph finally shows the true control flow.
+
+## Challenge 6a — Symbolic execution (angr)
+
+The final stage is a checker: 16 characters in, a 14-hex-character output, and only some inputs are "valid". I reversed the encoding (a 32-character alphabet mapped to 5-bit groups, an 80-bit intermediate form, and 56 output bits packed into hex), then used **angr** to execute the validity-check function and all 56 output-producing functions symbolically. The result is a set of SMT constraints describing exactly which inputs the binary accepts, solvable with an SMT solver.
+
 ## Tools & skills
 
-Ghidra, HyperDbg, gdb, Intel Pin, Python; ELF internals, Windows process internals and syscalls, anti-debugging and anti-unpacking bypass.
+Ghidra, HyperDbg, gdb, Intel Pin, angr, capstone, pyelftools, Python; ELF internals, Windows process internals and syscalls, anti-debugging / anti-unpacking / anti-analysis bypass, taint analysis, automatic deobfuscation and symbolic execution.
     `,
   },
   'google-play-protect-thesis': {

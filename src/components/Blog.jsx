@@ -17,9 +17,9 @@ const blogPosts = [
     slug: 'bama-neuralinq',
     title: 'Reverse Engineering the "Neuralinq" Malware',
     date: '2026-06-25',
-    excerpt: 'Syscall-level binary patching with HyperDbg, and unpacking a packed ELF by defeating anti-debugging and an auxv genuineness check.',
+    excerpt: 'A six-stage chain: HyperDbg binary patching, ELF unpacking, Intel Pin taint analysis, automatic deobfuscation, and angr symbolic execution.',
     tags: ['reverse-engineering', 'malware-analysis', 'ghidra'],
-    readTime: '8 min',
+    readTime: '12 min',
   },
   // Add more blog posts here
 ]
