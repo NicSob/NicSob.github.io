@@ -9,6 +9,7 @@ import Blog from './components/Blog'
 import ProjectPost from './components/ProjectPost'
 import Contact from './components/Contact'
 import Scanlines from './components/Scanlines'
+import ReadableToggle from './components/ReadableToggle'
 
 function HomePage() {
   return (
@@ -28,6 +29,7 @@ function App() {
   return (
     <div className="app">
       <Scanlines />
+      <ReadableToggle />
       <Navigation />
       <main>
         <Routes>

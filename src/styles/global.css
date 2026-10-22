@@ -394,3 +394,73 @@ code {
 .no-scanlines body::before {
   display: none;
 }
+
+/* ============================================================
+   READABLE THEME
+   Toggled via <html data-theme="readable"> (ReadableToggle).
+   A high-contrast light theme: scanlines, CRT flicker, text glow
+   and blinking are removed; the monospace font is kept so the
+   ASCII art and aligned listings do not break.
+   ============================================================ */
+:root[data-theme='readable'] {
+  --terminal-green: #0a7d33;
+  --terminal-green-dim: #0b6e2e;
+  --terminal-green-bright: #0b8f3a;
+  --terminal-green-glow: transparent;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f4f5f7;
+  --bg-tertiary: #eceef1;
+  --text-primary: #1a1d21;
+  --text-secondary: #363b42;
+  --text-muted: #5b626b;
+  --border-color: #c9ced6;
+  --scanline-opacity: 0;
+}
+
+/* Kill the CRT overlays and glow */
+:root[data-theme='readable'] body::before,
+:root[data-theme='readable'] body::after,
+:root[data-theme='readable'] .scanlines {
+  display: none !important;
+}
+
+:root[data-theme='readable'] body {
+  line-height: 1.7;
+}
+
+:root[data-theme='readable'] h1,
+:root[data-theme='readable'] h2,
+:root[data-theme='readable'] h3,
+:root[data-theme='readable'] h4,
+:root[data-theme='readable'] h5,
+:root[data-theme='readable'] h6,
+:root[data-theme='readable'] a:hover,
+:root[data-theme='readable'] .glow {
+  text-shadow: none !important;
+  animation: none !important;
+}
+
+/* Stop the blinking cursor / caret and the section-title '>' blink */
+:root[data-theme='readable'] .cursor,
+:root[data-theme='readable'] .section-title::before {
+  animation: none !important;
+}
+:root[data-theme='readable'] .cursor {
+  background: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* No glitch jitter in readable mode */
+:root[data-theme='readable'] .glitch:hover {
+  animation: none !important;
+}
+
+/* Readable selection */
+:root[data-theme='readable'] ::selection {
+  background: #cfe9d6;
+  color: var(--text-primary);
+}
+:root[data-theme='readable'] ::-moz-selection {
+  background: #cfe9d6;
+  color: var(--text-primary);
+}
