@@ -12,6 +12,13 @@ const featuredProjects = [
     tags: ['malware-analysis', 'android-security', 'research'],
   },
   {
+    id: 'bama-neuralinq',
+    title: 'Reverse Engineering the "Neuralinq" Malware (BAMA)',
+    year: '2026',
+    description: 'A chained reverse-engineering series for the Binary and Malware Analysis course. Patched a Windows binary at the syscall level with HyperDbg (bypassing an OTP check and short-circuiting process termination), and unpacked a packed ELF by defeating ptrace anti-debugging and an auxv-based genuineness check, then wrote a Python tool to repair the dumped binary into a Ghidra-loadable form.',
+    tags: ['reverse-engineering', 'malware-analysis', 'ghidra'],
+  },
+  {
     id: 'ijvm-simulator',
     title: 'IJVM Machine Simulator in C',
     year: '2023',

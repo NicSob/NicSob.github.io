@@ -13,6 +13,14 @@ const blogPosts = [
     tags: ['malware-analysis', 'android-security', 'research'],
     readTime: '10 min',
   },
+  {
+    slug: 'bama-neuralinq',
+    title: 'Reverse Engineering the "Neuralinq" Malware',
+    date: '2026-06-25',
+    excerpt: 'Syscall-level binary patching with HyperDbg, and unpacking a packed ELF by defeating anti-debugging and an auxv genuineness check.',
+    tags: ['reverse-engineering', 'malware-analysis', 'ghidra'],
+    readTime: '8 min',
+  },
   // Add more blog posts here
 ]
 

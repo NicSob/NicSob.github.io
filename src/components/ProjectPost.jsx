@@ -6,6 +6,41 @@ import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import './ProjectPost.css'
 
 const projectPosts = {
+  'bama-neuralinq': {
+    title: 'Reverse Engineering the "Neuralinq" Malware',
+    date: '2026-06-25',
+    tags: ['reverse-engineering', 'malware-analysis', 'ghidra'],
+    content: `
+## Overview
+
+My coursework for Binary and Malware Analysis at VU Amsterdam (grade 7.0): a chained reverse-engineering series against a fictional "Neuralinq" malware, where each challenge builds on the last. Below are the two challenges I wrote up in full.
+
+## Challenge 1 — Syscall-level binary patching (Windows)
+
+Two Windows processes talk to each other through a shared memory region (a \`Local\Handshake\` file mapping). Instead of a normal channel, they read and write each other's address space with ReadProcessMemory and WriteProcessMemory, exchanging short messages. The host asks a question, the guest answers, and a wrong answer eventually drives the host into an OTP (one-time-password) check and then process termination.
+
+I solved this with **HyperDbg**, a hypervisor-level debugger that can hook individual syscalls from outside the process:
+
+- **Flip the reply:** intercepted the guest's write syscall and rewrote its outgoing message so the host took the branch I wanted.
+- **Bypass the OTP check:** the comparison lives at a fixed offset in the host; an EPT (page-table) hook let me feed it the value it was comparing against, so the check always passed.
+- **Short-circuit termination:** hooked the process-termination syscall and returned a failure status, so the host stayed alive instead of exiting.
+
+The takeaway: with a debugger below the OS you can neutralise checks without ever patching the binary on disk.
+
+## Challenge 3 — Unpacking a packed ELF
+
+A later stage shipped a packed Linux binary: a small loader that unpacks the real "control panel" into memory at runtime, with several layers of protection.
+
+1. **Anti-debugging:** two \`ptrace\` checks had to be patched out statically (one needed to return 1, the other 0) before the binary would run under a debugger.
+2. **Self-unpacking dump:** I let the loader run under gdb until it had reconstructed the inner program, then dumped its full memory range from its program headers.
+3. **ELF repair:** a raw memory dump is not a valid file, so I wrote a Python tool (\`unpack.py\`) to rebuild it — fixing the ELF header, rewriting every program header so file offsets match virtual addresses, repairing the dynamic init/fini arrays, and stripping the runtime load base. The result loads cleanly in Ghidra and runs.
+4. **Genuineness check:** the panel read a value the packer had hidden in the process's \`auxv\` (AT_FLAGS) and refused to work without it. I hooked the entry point to restore the expected value before \`main\`, so the unpacked binary behaves like the original.
+
+## Tools & skills
+
+Ghidra, HyperDbg, gdb, Intel Pin, Python; ELF internals, Windows process internals and syscalls, anti-debugging and anti-unpacking bypass.
+    `,
+  },
   'google-play-protect-thesis': {
     title: "Bachelor's Thesis: Bypassing Google Play Protect",
     date: '2025-07-18',
