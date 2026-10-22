@@ -1,0 +1,183 @@
+.experience {
+  background: var(--bg-primary);
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.experience-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--terminal-green-dim);
+  padding: 0;
+  overflow: hidden;
+  transition: var(--transition-fast);
+}
+
+.experience-item:hover {
+  border-color: var(--terminal-green);
+  transform: translateX(5px);
+  box-shadow: -5px 0 20px var(--terminal-green-glow);
+}
+
+.experience-item.current {
+  border-color: var(--terminal-green);
+  border-left-width: 3px;
+}
+
+.experience-header {
+  background: var(--bg-tertiary);
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--terminal-green-dim);
+}
+
+.experience-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.experience-period {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--terminal-green);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--terminal-green);
+  border-radius: 50%;
+  animation: statusPulse 1.5s infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 var(--terminal-green-glow);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 0 4px var(--terminal-green-glow);
+  }
+}
+
+.experience-title {
+  color: var(--terminal-green);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.experience-company {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.company-icon {
+  color: var(--terminal-green-dim);
+}
+
+.company-divider {
+  color: var(--text-muted);
+}
+
+.company-location {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.experience-body {
+  padding: 1.5rem;
+}
+
+.experience-responsibilities {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+.experience-responsibilities li {
+  color: var(--text-secondary);
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  line-height: 1.6;
+}
+
+.resp-prefix {
+  color: var(--terminal-green-dim);
+  flex-shrink: 0;
+}
+
+.experience-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--bg-tertiary);
+}
+
+.exp-tag {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  transition: var(--transition-fast);
+}
+
+.exp-tag:hover {
+  color: var(--terminal-green);
+}
+
+.experience-footer {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.footer-text {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.cmd-prompt {
+  color: var(--terminal-green-dim);
+  margin-right: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .experience-item:hover {
+    transform: none;
+  }
+
+  .experience-header {
+    padding: 1rem;
+  }
+
+  .experience-body {
+    padding: 1rem;
+  }
+
+  .experience-title {
+    font-size: 1.1rem;
+  }
+
+  .experience-company {
+    font-size: 0.9rem;
+  }
+}
