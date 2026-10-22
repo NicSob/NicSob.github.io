@@ -129,6 +129,9 @@ function Hero() {
                 <button onClick={() => scrollToSection('contact')} className="command-btn">
                   <span className="cmd-prompt">$</span> ./contact.sh
                 </button>
+                <a href="/Mikolaj_Sobczyk_CV.pdf" target="_blank" rel="noopener noreferrer" className="command-btn" download="Mikolaj_Sobczyk_CV.pdf">
+                  <span className="cmd-prompt">$</span> wget cv.pdf
+                </a>
               </div>
             </motion.div>
 

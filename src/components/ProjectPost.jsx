@@ -92,6 +92,8 @@ Ghidra, HyperDbg, gdb, Intel Pin, angr, capstone, pyelftools, Python; ELF intern
     date: '2025-07-18',
     tags: ['android-security', 'malware-analysis', 'research'],
     content: `
+[Download the full thesis (PDF)](/Mikolaj_Sobczyk_BSc_Thesis.pdf)
+
 ## Summary
 
 My BSc thesis at VU Amsterdam (supervised by Prof. Herbert Bos, daily supervisor Dyon Goos, grade 7.0). It asks how capable Google Play Protect's dynamic analysis is today, and whether Android app vetting has improved since *Adventures in BouncerLand* (Percoco & Schulte, 2012) showed that Google Bouncer could be evaded.
