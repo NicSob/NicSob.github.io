@@ -22,6 +22,13 @@ const contactMethods = [
     href: 'https://github.com/NicSob',
     icon: '🐙',
   },
+  {
+    type: 'CV',
+    value: 'Download CV (PDF)',
+    href: '/Mikolaj_Sobczyk_CV.pdf',
+    icon: '📄',
+    download: true,
+  },
 ]
 
 function Contact() {
@@ -94,6 +101,7 @@ function Contact() {
                         href={method.href}
                         target={method.type !== 'EMAIL' ? '_blank' : undefined}
                         rel={method.type !== 'EMAIL' ? 'noopener noreferrer' : undefined}
+                        download={method.download ? 'Mikolaj_Sobczyk_CV.pdf' : undefined}
                         className="contact-value"
                       >
                         {method.value}

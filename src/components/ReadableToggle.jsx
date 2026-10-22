@@ -5,10 +5,11 @@ import './ReadableToggle.css'
 // blinking removed. Persisted per-viewer in localStorage; falls back safely
 // if storage is unavailable (private window, blocked site data).
 function readStored() {
+  // Readable is the default; only an explicit 'terminal' choice opts out.
   try {
-    return localStorage.getItem('theme') === 'readable'
+    return localStorage.getItem('theme') !== 'terminal'
   } catch {
-    return false
+    return true
   }
 }
 

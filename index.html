@@ -15,6 +15,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Mikołaj Sobczyk | Cybersecurity Portfolio</title>
+    <script>
+      // Default to the readable theme unless the viewer chose terminal.
+      try {
+        if (localStorage.getItem('theme') !== 'terminal') {
+          document.documentElement.setAttribute('data-theme', 'readable');
+        }
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'readable');
+      }
+    </script>
+
   </head>
   <body>
     <div id="root"></div>
