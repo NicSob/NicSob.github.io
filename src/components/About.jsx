@@ -5,35 +5,34 @@ import './About.css'
 
 const skills = {
   cybersecurity: [
-    'Applied Cryptography',
-    'Network Security',
     'Malware Analysis',
+    'Reverse Engineering',
+    'Android App Analysis',
+    'Software Security',
     'Secure Systems',
   ],
   programming: [
     'Python',
     'C',
     'C++',
-    'Assembly (x86_64 AT&T)',
+    'Kotlin',
+    'Java',
+    'Assembly (x86-64, AT&T)',
+    'Bash',
     'Scala',
-    'Matlab',
   ],
   tools: [
-    'Git',
+    'Linux',
+    'Ghidra',
     'Wireshark',
+    'Git',
     'Docker',
-    'JIRA',
-    'Postman',
+    'Android Studio',
+    'FastAPI',
     'Blue Prism',
   ],
   cloud: [
     'Google Cloud',
-  ],
-  softSkills: [
-    'Team Leadership',
-    'Effective Communication',
-    'Critical Thinking',
-    'Time Management',
   ],
 }
 
@@ -96,16 +95,15 @@ function About() {
             </div>
             <div className="terminal-body">
               <p>
-                Cybersecurity specialist and systems programmer with a strong foundation in
-                computer security, cryptography, and low-level systems development. Currently
-                pursuing an MSc in Computer Security at Vrije Universiteit Amsterdam, with
-                research interests in malware analysis and Android security.
+                MSc Computer Security student at Vrije Universiteit Amsterdam, focused on
+                offensive and systems security. For my BSc thesis I built an instrumented
+                Android app and submitted it to Google Play to study how Google Play
+                Protect's dynamic analysis vets apps.
               </p>
               <p>
-                Passionate about building secure systems and understanding the intricate
-                details of how software vulnerabilities emerge and can be mitigated.
-                Experienced in both offensive security research and defensive security
-                implementations.
+                Coursework in binary and malware analysis, software security and AI for
+                security. I'm looking for a graduation project or security internship in
+                pentesting, vulnerability research or malware analysis.
               </p>
             </div>
           </motion.div>
@@ -168,18 +166,6 @@ function About() {
                 </ul>
               </div>
 
-              <div className="skill-category">
-                <h4 className="category-title">
-                  <span className="folder-icon">📁</span> soft_skills/
-                </h4>
-                <ul className="skill-list">
-                  {skills.softSkills.map((skill, index) => (
-                    <li key={index} className="skill-item">
-                      <span className="file-icon">├──</span> {skill}
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
           </motion.div>
 

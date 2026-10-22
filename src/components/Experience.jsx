@@ -5,18 +5,27 @@ import './Experience.css'
 
 const experiences = [
   {
-    period: '2025-Present',
+    period: 'Jun 2025-Jan 2026',
     title: 'Junior Technological Solutions Engineer',
     company: 'Coliving Ventures',
     location: 'Amsterdam',
     responsibilities: [
-      'Implement cybersecurity compliance policies and data protection measures',
-      'Conduct large-scale data collection, processing, and analysis with Python',
-      'Develop automated web scraping pipelines for structured data acquisition',
-      'Explore Retrieval-Augmented Generation (RAG) for AI-driven insights',
+      'Implemented cybersecurity compliance policies and data protection measures',
+      'Collected, processed and analysed large-scale data with Python',
+      'Developed automated web scraping pipelines for structured data acquisition',
+      'Explored Retrieval-Augmented Generation (RAG) for AI-driven insights',
     ],
-    tags: ['Python', 'Cybersecurity', 'Data Analysis', 'AI/ML'],
-    current: true,
+    tags: ['Python', 'Web Scraping', 'Data Analysis', 'RAG'],
+    current: false,
+  },
+  {
+    period: 'Nov 2023-Jun 2025',
+    title: 'Core Team Member',
+    company: 'Google Developer Student Clubs',
+    location: 'Amsterdam',
+    responsibilities: [],
+    tags: ['Community'],
+    current: false,
   },
   {
     period: 'Nov 2023-Feb 2024',
@@ -32,24 +41,26 @@ const experiences = [
   },
   {
     period: 'Jul 2023-Feb 2024',
-    title: 'Head of IT',
+    title: 'Co-Head of IT',
     company: 'International Congress of Polish Student Societies',
     location: 'Amsterdam',
     responsibilities: [
-      'Deployed encrypted ticket management and database system, ensuring data security',
-      'Streamlined IT infrastructure for event operations and cybersecurity compliance',
+      'Built the congress website, which also served as its e-commerce platform',
+      'Deployed an encrypted ticket management and database system',
+      'Streamlined IT infrastructure for event operations',
     ],
     tags: ['IT Infrastructure', 'Security', 'Database Management'],
     current: false,
   },
   {
     period: 'Jul-Nov 2023',
-    title: 'Robotic Process Automation Developer',
+    title: 'Student in Robotic Process Automation',
     company: 'Nordea',
     location: 'Łódź',
     responsibilities: [
-      'Automated manual workflows, reducing human error and improving resilience',
-      'Enhanced operational security through process auditing and monitoring',
+      'Internship in Nordea\'s Robotics Centre of Excellence',
+      'Automated manual workflows with RPA, reducing human error and improving resilience',
+      'Supported process auditing and monitoring',
     ],
     tags: ['RPA', 'Blue Prism', 'Automation', 'Process Optimization'],
     current: false,
@@ -122,14 +133,16 @@ function Experience() {
               </div>
 
               <div className="experience-body">
-                <ul className="experience-responsibilities">
-                  {exp.responsibilities.map((resp, idx) => (
-                    <li key={idx}>
-                      <span className="resp-prefix">→</span>
-                      {resp}
-                    </li>
-                  ))}
-                </ul>
+                {exp.responsibilities.length > 0 && (
+                  <ul className="experience-responsibilities">
+                    {exp.responsibilities.map((resp, idx) => (
+                      <li key={idx}>
+                        <span className="resp-prefix">→</span>
+                        {resp}
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
                 <div className="experience-tags">
                   {exp.tags.map((tag, idx) => (

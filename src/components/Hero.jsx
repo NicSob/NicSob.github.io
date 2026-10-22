@@ -13,7 +13,7 @@ const asciiArt = `
 `
 
 const introText = "Mikołaj Sobczyk"
-const subtitleText = "Cybersecurity Specialist & Systems Programmer"
+const subtitleText = "Offensive & Systems Security | MSc Computer Security @ VU Amsterdam"
 
 const bootSequence = [
   '> Initializing secure connection...',

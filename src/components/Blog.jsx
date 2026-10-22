@@ -7,17 +7,9 @@ import './Blog.css'
 const blogPosts = [
   {
     slug: 'google-play-protect-thesis',
-    title: "Inspecting Google Play Protect's Dynamic Analysis",
-    date: '2025-01-15',
-    excerpt: 'Research into Android malware evasion techniques and security flaws in Google Play Protect sandbox environment.',
-    tags: ['malware-analysis', 'android-security', 'research'],
-    readTime: '10 min',
-  },
-  {
-    slug: 'a-play-protect-thesis',
-    title: "a Google Play Protect's Dynamic Analysis",
-    date: '2025-01-15',
-    excerpt: 'Research into Android malware evasion techniques and security flaws in Google Play Protect sandbox environment.',
+    title: "Bypassing Google Play Protect",
+    date: '2025-07-18',
+    excerpt: 'How Google Play Protect\'s dynamic analysis actually vets a new app, measured from inside the app, and how it compares with Google Bouncer in 2012.',
     tags: ['malware-analysis', 'android-security', 'research'],
     readTime: '10 min',
   },

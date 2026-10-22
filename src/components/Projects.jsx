@@ -6,23 +6,23 @@ import './Projects.css'
 const featuredProjects = [
   {
     id: 'google-play-protect-thesis',
-    title: "Bachelor's Thesis: Inspecting Google Play Protect's Dynamic Analysis",
+    title: "Bachelor's Thesis: Bypassing Google Play Protect",
     year: '2025',
-    description: 'Researched Android malware evasion techniques and assessed security flaws in Google Play Protect. Developed and deployed a controlled Android application to empirically test sandbox limitations.',
+    description: 'Built an instrumented Android app (Kotlin, Jetpack Compose, FastAPI backend) and submitted it to Google Play so the vetting run itself became the dataset. Google Play Protect\'s dynamic analysis ran once, for about 6 minutes, on a Google-hosted device and never exercised form input, so simple environment checks combined with time or logic bombs would likely evade it.',
     tags: ['malware-analysis', 'android-security', 'research'],
   },
   {
     id: 'ijvm-simulator',
     title: 'IJVM Machine Simulator in C',
     year: '2023',
-    description: 'Engineered an IJVM simulator capable of executing binary files, showcasing profound grasp of memory management and control flow. Validated simulator\'s performance against stringent tests, affirming accurate representation of IJVM instructions.',
+    description: 'Built an IJVM simulator in C that loads and executes IJVM binaries, implementing the instruction set, stack and control flow, and validated it against a test suite.',
     tags: ['systems-programming', 'C', 'low-level'],
   },
   {
     id: 'tcp-chat-client',
     title: 'Text-based Chat Client and Server in Python with TCP',
     year: '2023',
-    description: 'Crafted TCP-based chat client in Python with user-friendly interface abstracting protocol complexities. Programmed concurrent server handling multiple connections, demonstrating networking and multi-threading proficiency.',
+    description: 'Built a text-based chat client and a multi-threaded server in Python over TCP, handling multiple concurrent user connections.',
     tags: ['networking', 'python', 'concurrency'],
   },
 ]

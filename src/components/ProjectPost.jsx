@@ -7,78 +7,55 @@ import './ProjectPost.css'
 
 const projectPosts = {
   'google-play-protect-thesis': {
-    title: "Bachelor's Thesis: Inspecting Google Play Protect's Dynamic Analysis",
-    date: '2025-01-15',
-    tags: ['malware-analysis', 'android-security', 'research'],
+    title: "Bachelor's Thesis: Bypassing Google Play Protect",
+    date: '2025-07-18',
+    tags: ['android-security', 'malware-analysis', 'research'],
     content: `
-## Abstract
+## Summary
 
-This research investigates the security mechanisms of Google Play Protect, specifically focusing on its dynamic analysis capabilities and the evasion techniques employed by Android malware authors.
+My BSc thesis at VU Amsterdam (supervised by Prof. Herbert Bos, daily supervisor Dyon Goos, grade 7.0). It asks how capable Google Play Protect's dynamic analysis is today, and whether Android app vetting has improved since *Adventures in BouncerLand* (Percoco & Schulte, 2012) showed that Google Bouncer could be evaded.
 
-## Introduction
+## Approach
 
-Google Play Protect serves as the primary defense mechanism for Android devices against malicious applications. This thesis explores the weaknesses and limitations of its sandbox environment through empirical testing.
+Google Play Protect is a closed system, so instead of guessing what it does I made the vetting run itself the dataset:
 
-## Methodology
+- I built **PennyTracker**, a benign expense-tracker app (Kotlin, Jetpack Compose, Room, MVVM).
+- The app logs every screen navigation, UI event and lifecycle change with timestamps, plus the device environment (build, hardware, locale, network, emulator and ADB flags, uptime).
+- The logs go to a small **FastAPI** backend, so whatever runs the app during review reports back to me.
+- I submitted the signed app bundle to Google Play closed testing, where Play Protect scans it right after upload.
 
-### Test Environment Setup
+The app never contained malicious behaviour. Environment detection, logic bombs and time bombs were evaluated as *potential* evasions based on what the scan revealed.
 
-A controlled Android application was developed to test various sandbox detection techniques:
+## What the scan looked like
 
-\`\`\`java
-public class SandboxDetector {
-    public boolean isRunningInSandbox() {
-        return checkEmulatorProperties() ||
-               checkSuspiciousFiles() ||
-               checkDebuggerAttached() ||
-               checkNetworkAnomalies();
-    }
+| Observation | Value |
+|---|---|
+| When | immediately on upload, run once |
+| Duration | about 6 min 15 s |
+| Reported device | OnePlus 8 Pro, Android 11 (SDK 30) |
+| Public IP | a Google address |
+| Emulator / ADB flags | both false |
+| Device uptime | 5 min 40 s |
+| Interaction | 33 navigation events, main screens only |
 
-    private boolean checkEmulatorProperties() {
-        String[] suspiciousProps = {
-            "ro.hardware",
-            "ro.product.model",
-            "ro.kernel.qemu"
-        };
-        // Check for emulator-specific values
-        for (String prop : suspiciousProps) {
-            String value = SystemProperties.get(prop);
-            if (isEmulatorValue(value)) {
-                return true;
-            }
-        }
-        return false;
-    }
-}
-\`\`\`
+The scan never filled in a form, opened the date picker or category drop-down, toggled expense/income, pressed Save, or opened the edit/delete menu.
 
-### Evasion Techniques Tested
+## Findings
 
-1. **Timing-based Detection**: Measuring execution time anomalies
-2. **Environment Fingerprinting**: Detecting virtualized environments
-3. **API Hooking Detection**: Identifying instrumentation frameworks
-4. **Network Analysis**: Detecting sandbox network characteristics
+- Simple environment checks (a Google-owned IP, very short uptime) combined with a **time bomb**, or a **logic bomb** behind a form submission, would very likely evade this analysis.
+- Compared with Google Bouncer in 2012: analysis is longer (minutes instead of under 30 seconds) but still runs once at upload and still has shallow interaction depth, so similar weaknesses persist.
 
-## Results
+## Recommendations
 
-The research identified several weaknesses in Google Play Protect's dynamic analysis:
+Longer analysis, randomised and deeper interaction (including form input), and not exposing an IP that points straight back to Google.
 
-| Technique | Detection Rate | Notes |
-|-----------|---------------|-------|
-| Timing Analysis | 73% | Effective against basic sandboxes |
-| Environment Checks | 45% | Partially mitigated |
-| API Hook Detection | 82% | Most effective technique |
-| Network Analysis | 61% | Variable results |
+## Limitations
 
-## Conclusions
+One app category; the closed-testing barrier; a limited time window; on-device protection not studied; no root access, so no syscall, file-system or memory traces.
 
-The findings suggest that while Google Play Protect provides a baseline level of security, sophisticated malware can employ multiple evasion techniques to bypass detection. Recommendations for improving the sandbox environment are provided.
+## Reference
 
-## References
-
-- [PLACEHOLDER - Add academic references]
-- Android Security Documentation
-- Related malware analysis papers
+- N. J. Percoco and S. Schulte, *Adventures in BouncerLand*, Black Hat USA 2012.
     `,
   },
 }

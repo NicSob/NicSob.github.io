@@ -12,17 +12,15 @@ const contactMethods = [
   },
   {
     type: 'LINKEDIN',
-    value: 'linkedin.com/in/msobczyk',
-    href: 'https://linkedin.com/in/msobczyk',
+    value: 'linkedin.com/in/mikolaj-sobczyk',
+    href: 'https://www.linkedin.com/in/mikolaj-sobczyk',
     icon: '💼',
-    placeholder: true,
   },
   {
     type: 'GITHUB',
-    value: 'github.com/msobczyk',
-    href: 'https://github.com/msobczyk',
+    value: 'github.com/NicSob',
+    href: 'https://github.com/NicSob',
     icon: '🐙',
-    placeholder: true,
   },
 ]
 
@@ -180,7 +178,7 @@ function Contact() {
             <span className="built-prefix">#</span> Built with React + Terminal aesthetics
           </p>
           <p className="footer-version">
-            v1.0.0 | Last updated: {new Date().toISOString().split('T')[0]}
+            v1.0.1 | Last updated: 2026-10-22
           </p>
         </motion.footer>
       </div>
