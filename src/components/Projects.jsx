@@ -30,6 +30,20 @@ const featuredProjects = [
     tags: ['binary-exploitation', 'pwn', 'rop'],
   },
   {
+    id: 'hardware-security',
+    title: 'Hardware Security: Microarchitectural and Embedded Attacks',
+    year: '2026',
+    description: 'In progress (Oct-Dec 2026, VUSec course): reverse-engineering DRAM bank mappings via row-buffer timing, building cache and speculative-execution side channels, extracting and exploiting embedded firmware, and a group project reproducing a state-of-the-art hardware attack.',
+    tags: ['side-channels', 'microarchitecture', 'firmware', 'in-progress'],
+  },
+  {
+    id: 'homelab',
+    title: 'Homelab: Self-Hosted Linux Server',
+    year: '2026',
+    description: 'A Fedora server running containerised services with Docker Compose: Jellyfin media streaming, Pi-hole DNS filtering and Syncthing. Nothing is exposed publicly: SSH and every web UI are reachable only over a Tailscale mesh VPN, behind a host firewall, with SELinux kept enforcing.',
+    tags: ['linux', 'docker', 'selinux', 'tailscale'],
+  },
+  {
     id: 'ijvm-simulator',
     title: 'IJVM Machine Simulator in C',
     year: '2023',

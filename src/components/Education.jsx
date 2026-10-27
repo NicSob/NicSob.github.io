@@ -11,6 +11,7 @@ const education = [
     location: 'Amsterdam, Netherlands',
     details: [
       'Focus: offensive and systems security, malware analysis',
+      'Currently taking: Hardware Security, Network Security',
     ],
     courses: [
       'Binary and Malware Analysis',

@@ -186,7 +186,7 @@ function Contact() {
             <span className="built-prefix">#</span> Built with React + Terminal aesthetics
           </p>
           <p className="footer-version">
-            v1.0.1 | Last updated: 2026-10-22
+            v1.1.0 | Last updated: 2026-10-28
           </p>
         </motion.footer>
       </div>

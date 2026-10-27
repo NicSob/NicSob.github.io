@@ -29,7 +29,6 @@ const skills = {
     'Docker',
     'Android Studio',
     'FastAPI',
-    'Blue Prism',
   ],
   cloud: [
     'Google Cloud',
@@ -102,8 +101,14 @@ function About() {
               </p>
               <p>
                 Coursework in binary and malware analysis, software security and AI for
-                security. I'm looking for a graduation project or security internship in
-                pentesting, vulnerability research or malware analysis.
+                security; this term, hardware security (side channels, firmware attacks)
+                and network security. Outside coursework I run a self-hosted Linux homelab
+                (Fedora, Docker, Tailscale-only access, SELinux enforcing).
+              </p>
+              <p>
+                I'm looking for a graduation project or security internship in pentesting,
+                vulnerability research or malware analysis. Available for an internship or
+                part-time role now, and full-time from 2027.
               </p>
             </div>
           </motion.div>
